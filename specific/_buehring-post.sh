@@ -17,7 +17,7 @@ sed -r '0,/^(ignoreip =.*)$/{s//\1 '"${a[*]//\//\\/}"'/}' \
     -i /etc/fail2ban/jail.d/999-defaults-local.conf 
 
 # packages
-apt install -qq \
+apt-get install -qq \
     htop \
     tree \
     git-lfs \
