@@ -51,6 +51,8 @@ mkdir -m 2775 \
     /local/containers
 chown containerroot:containerroot \
     /local/containers
+ln -fs /local/containers \
+    /opt/
 
 # seafile:seafile (8000:8000)
 groupadd \
