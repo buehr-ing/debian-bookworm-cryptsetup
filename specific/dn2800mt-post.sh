@@ -10,9 +10,11 @@
 
 # network device fix (ugly diff between buster-rescue and bookworm)
 sed -r 's/ eth0( |$)/ eno0\1/' \
-    -i /etc/network/interfaces.d/*
+    -i /etc/network/interfaces.d/* \
+    --debug |grep -A2 ^MATCHED
 sed -r '/^IP=/{s/:eth0:/:eno0:/}' \
-    -i /etc/initramfs-tools/initramfs.conf
+    -i /etc/initramfs-tools/initramfs.conf \
+    --debug |grep -A2 ^MATCHED
 update-initramfs -ukall
 
 # /etc/default/grub
