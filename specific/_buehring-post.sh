@@ -23,6 +23,7 @@ apt-get install -qq \
     tree \
     git-lfs \
     ncat \
+    ethtool \
     net-tools \
     ethstatus \
     strace \
