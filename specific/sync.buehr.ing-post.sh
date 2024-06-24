@@ -14,7 +14,9 @@ echo 'data_crypt UUID=0d15c67a-0eb4-4294-bc0c-40b0d71caca5 none luks,discard,ini
 echo '/dev/mapper/data-local /local ext4 noatime 0 2' \
     |tee -a /etc/fstab
 
+#
 # docker-ce
+#
 curl -fsSL https://download.docker.com/linux/debian/gpg \
      -o /etc/apt/keyrings/docker.asc
 chmod a+r /etc/apt/keyrings/docker.asc
@@ -54,6 +56,10 @@ chown containerroot:containerroot \
 ln -fs /local/containers \
     /opt/
 
+#
+# seafile
+#
+
 # seafile:seafile (8000:8000)
 groupadd \
     --gid 8000 \
@@ -70,6 +76,29 @@ mkdir -m 2770 \
     /local/containers/seafile
 chown seafile \
     /local/containers/seafile
+
+#
+# gitolite
+#
+apt-get -qq install \
+    gitolite3
+
+# git:git (501:501)
+groupadd \
+    --gid 501 \
+    --system git
+useradd \
+    --uid 501 \
+    --gid 501 \
+    --home-dir /local/gitolite \
+    --no-create-home \
+    --shell /bin/bash \
+    --comment 'Gitolite Server' \
+    --system git
+mkdir -m 0700 \
+    /local/gitolite
+chown git:git \
+    /local/gitolite
 
 # It must always stay here!
 return 0
