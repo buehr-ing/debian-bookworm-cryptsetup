@@ -82,7 +82,7 @@ mount -av
 disk=sda
 
 cryptsetup open /dev/${disk}4 system_crypt
-sleep 1s
+
 mkdir -vp /target
 mount -v /dev/mapper/system-root /target
 mount -v /dev/${disk}3 /target/boot
@@ -98,7 +98,7 @@ LANG=C.UTF-8 chroot /target /bin/bash
 ### unchroot and unmount 
 
 ```bash
-# leave chroot with CTRL+D or exit
+# leave the chroot with CTRL+D or exit
 
 umount -v /target/{sys{/firmware/efi/efivars,},proc,dev{/pts,},boot{/efi,},} 
 vgchange -an system
