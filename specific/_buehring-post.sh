@@ -19,6 +19,7 @@ sed -r '0,/^(ignoreip =.*)$/{s//\1 '"${a[*]//\//\\/}"'/}' \
 # packages
 apt-get install -qq \
     htop \
+    psmisc \
     tree \
     git-lfs \
     ncat \
