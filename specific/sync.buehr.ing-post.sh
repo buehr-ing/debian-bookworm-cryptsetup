@@ -63,7 +63,7 @@ ln -fs /local/containers \
 # seafile:seafile (8000:8000)
 groupadd \
     --gid 8000 \
-    --system seafile
+    seafile
 useradd \
     --uid 8000 \
     --gid 8000 \
@@ -76,6 +76,29 @@ mkdir -m 2770 \
     /local/containers/seafile
 chown seafile \
     /local/containers/seafile
+
+#
+# dokuwiki
+#
+
+# dokuwiki:dokuwiki (502:502)
+groupadd \
+    --gid 502 \
+    --system dokuwiki
+useradd \
+    --uid 502 \
+    --gid 502 \
+    --home-dir /local/containers/dokuwiki \
+    --no-create-home \
+    --shell /sbin/nologin \
+    --comment 'Dokuwiki Server' \
+    --system dokuwiki
+mkdir -m 2770 \
+    /local/containers/dokuwiki
+mkdir -m 2770 \
+    /local/containers/dokuwiki/storage
+chown dokuwiki:dokuwiki \
+    /local/containers/dokuwiki/storage
 
 #
 # gitolite
