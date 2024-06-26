@@ -8,6 +8,11 @@
 
 # 20240617 Marcel Buehring <https://marcel.buehr.ing>
 
+# /etc/resolv.conf
+sed -e '/^domain\s/d;0,/^/i domain buehr.ing' \
+    -e '/^search\s/d;0,/^/i search buehr.ing buehring.it buehring.ch buehring.cloud' \
+    -i /etc/resolv.conf
+
 # /etc/fail2ban/jail.d/999-defaults-local.conf
 a=( 31.10.142.23
     2a02:aa12:c381:4d80::/64
